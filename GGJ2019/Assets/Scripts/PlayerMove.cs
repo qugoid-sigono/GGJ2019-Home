@@ -72,7 +72,7 @@ public class PlayerMove : MonoBehaviour
 		}
 	}
 
-	void StopMove()
+	public void StopMove()
 	{
 		playerRigidbody2D.velocity = new Vector2(0, 0);
 	}
