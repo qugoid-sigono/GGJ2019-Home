@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject objPlayer;
     public GameObject objTransition;
+	public ParticleSystem objParticle;
 
     #region 玩家血量數值設定
     //玩家血量數值
@@ -36,6 +37,7 @@ public class GameManager : MonoBehaviour
     public int currentItemHold;        //玩家所持物品數量
     //public int pointPerItem;           //每個道具所加的分
     public int hpPerItem;              //每個道具所加的血
+	public int pickaxeNum = 0;		   //可以鑿冰塊的次數(十字鎬)
 
     #region  遊戲環境數值
     public bool isGameStart = false; //遊戲開始狀態(true:開始/false:結束)
@@ -186,6 +188,26 @@ public class GameManager : MonoBehaviour
     {
         currentItemHold += 1;
     }
+
+	public void AddPickaxe(int num)
+	{
+		pickaxeNum += num;
+	}
+
+	public bool UsePickaxe()
+	{
+		if(pickaxeNum > 0){
+			pickaxeNum --;
+			if (objParticle != null) {
+				Vector3 mousePos = new Vector3 (Input.mousePosition.x, Input.mousePosition.y, 0);
+				Vector3 mousePosUI = Camera.main.ScreenToWorldPoint (mousePos);
+				objParticle.GetComponent<Transform> ().position = mousePosUI;
+				objParticle.Play ();
+			}
+			return true;
+		}
+		return false;
+	}
 
     //改變玩家狀態
     public void ChangePlayerStat(int stat = 0)
