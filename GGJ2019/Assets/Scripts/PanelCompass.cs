@@ -11,13 +11,13 @@ public class PanelCompass : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        target = GameObject.Find("home");
+        target = GameObject.Find("Home");
         player = GameObject.Find("Player");
 
         GameObject uiCamera = GameObject.Find("CameraUI");
 
         Vector2 dir = this.target.transform.position - uiCamera.transform.position;
-        this.initialAngle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - Mathf.Rad2Deg;
+        this.initialAngle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
     }
 
     // Update is called once per frame
@@ -28,7 +28,8 @@ public class PanelCompass : MonoBehaviour
         }
 
         Vector2 dir = this.target.transform.position - this.player.transform.position;
-        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - Mathf.Rad2Deg - this.initialAngle;
+        // The magic of degree.
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - Mathf.Rad2Deg * 1.57f;
         Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         this.transform.rotation = Quaternion.Slerp(this.transform.rotation, rotation, rotateSpeed * Time.deltaTime);
     }
