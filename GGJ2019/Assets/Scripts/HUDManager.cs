@@ -7,10 +7,11 @@ public class HUDManager : MonoBehaviour
 {
     public static HUDManager instance = null;     //Allows other scripts to call functions from HUDManager.  
 
-    private GameManager gameManager = new GameManager();
+    private GameManager gameManager;
 
     public GameObject obj_HpBar;
     public GameObject obj_MsgBlock;
+    public GameObject obj_Result;
 
     void Awake()
     {
@@ -50,5 +51,11 @@ public class HUDManager : MonoBehaviour
     public void sendTextToMsgBlock(string message)
     {
         obj_MsgBlock.GetComponent<Text>().text = message;
+    }
+
+    public void OpenResult()
+    {
+        Debug.Log("開結果");
+        obj_Result.SetActive(true);
     }
 }

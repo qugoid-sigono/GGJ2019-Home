@@ -14,14 +14,14 @@ public class GameManager : MonoBehaviour
     //玩家血量數值
     private float iniHp;                // 最大初始血量
     public float maxHp = 100f;          // 當前最大血量(初始血量)
-    [HideInInspector]
+    //[HideInInspector]
     public float minHp = 0f;            // 最低血量
     //public float plusHpPerSecond = 1;   // 每秒加多少
     public float minusHPPerSecond = 1;  // 每秒扣多少
 
-    [HideInInspector]
+    //[HideInInspector]
     public float currentPlayerHp;       // 玩家當前血量
-    [HideInInspector]
+    //[HideInInspector]
     public float HpPercentDisplay;      //HP顯示百分率
 
     public int HpPerPercent;            //每多少血+10%血量顯示
@@ -43,6 +43,8 @@ public class GameManager : MonoBehaviour
     }
 
     public playerStat currentPlayerStat;              //玩家當前狀況(0:nothing/1:家外/2:家內)
+
+    private HUDManager HudManager;
     #endregion
 
 
@@ -64,10 +66,16 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         iniHp = maxHp;
+        HudManager = HUDManager.instance;
     }
 
     void Update()
     {
+        if (Input.GetKeyUp(KeyCode.P))
+        {
+            GameStart();
+        }
+
         if (gameStart == true)
         {
 
@@ -110,7 +118,7 @@ public class GameManager : MonoBehaviour
         //根據玩家所持道具數量加分
         AddPoint(currentItemHold * pointPerItem);
 
-        HpPercentDisplay = Convert.ToInt32(Math.Floor(maxHp / HpPerPercent)) * 0.1f > 1 ? 1 : Convert.ToInt32(Math.Floor(maxHp / HpPerPercent)) * 0.1f;    //顯示最大血量變更
+        HpPercentDisplay = Convert.ToInt32(Math.Floor(maxHp / HpPerPercent)) * 0.1f > 1 ? 1 : (Convert.ToInt32(Math.Floor(maxHp / HpPerPercent)) * 0.1f);    //顯示最大血量變更
         Debug.Log(HpPercentDisplay);
         //currentItemHold = 0;    //道具歸0
     }
@@ -123,6 +131,7 @@ public class GameManager : MonoBehaviour
             gameStart = false;
             //最高分存檔
             PlayerPrefs.SetInt("HighScore", totalScore);
+            HudManager.OpenResult();
             Debug.Log("遊戲結束！");
         }
     }
@@ -134,7 +143,7 @@ public class GameManager : MonoBehaviour
         currentPlayerHp = iniHp;
         maxHp = iniHp;
         currentPlayerStat = playerStat.OutHouse;
-        HpPercentDisplay = maxHp / HpPerPercent;        //百分率
+        HpPercentDisplay = maxHp / HpPerPercent * 0.1f;        //百分率
     }
 
     void action_plusHp()
@@ -172,6 +181,11 @@ public class GameManager : MonoBehaviour
 
     public void BackToMenu()
     {
-        SceneManager.LoadScene("MenuScene", LoadSceneMode.Additive);
+        SceneManager.LoadScene("Menu");
+    }
+
+    public void Reload()
+    {
+        SceneManager.LoadScene("Game");
     }
 }
