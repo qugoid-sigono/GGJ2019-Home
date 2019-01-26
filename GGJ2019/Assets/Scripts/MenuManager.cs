@@ -28,17 +28,18 @@ public class MenuManager : MonoBehaviour
 
     public void OpenCredit()
     {
-        creditPanel.active = true;
+        Debug.Log("打開");
+        creditPanel.SetActive(true);
     }
 
     public void CloseCredit()
     {
-        creditPanel.active = false;
+        creditPanel.SetActive(false);
     }
 
     public void Play()
     {
         //轉換Scene
-        SceneManager.LoadScene("GameScene", LoadSceneMode.Additive);
+        SceneManager.LoadScene("Game");
     }
 }

@@ -45,8 +45,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHp: 200
   minHp: 0
-  plusHpPerSecond: 20
   minusHPPerSecond: 20
   currentPlayerHp: 0
-  totalPoint: 0
+  HpPercentDisplay: 0
+  HpPerPercent: 50
+  totalScore: 0
+  currentItemHold: 0
+  pointPerItem: 50
+  hpPerItem: 25
+  gameStart: 0
   currentPlayerStat: 0
