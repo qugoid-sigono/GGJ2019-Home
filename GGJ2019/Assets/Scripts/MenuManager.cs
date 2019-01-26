@@ -17,7 +17,7 @@ public class MenuManager : MonoBehaviour
 
         highScore = PlayerPrefs.GetInt("HighScore");
 
-        objHighScoreText.GetComponent<Text>().text = highScore.ToString();
+        objHighScoreText.GetComponent<Text>().text = Mathf.Floor(highScore / 60).ToString("00") + ":" + Mathf.Floor(highScore % 60).ToString("00");
     }
 
     // Update is called once per frame
