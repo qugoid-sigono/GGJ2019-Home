@@ -1,8 +1,10 @@
 ﻿using System;
 using UnityEngine;
 using System.Collections;
+using System.Diagnostics;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Debug = UnityEngine.Debug;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,11 +14,17 @@ public class GameManager : MonoBehaviour
     //玩家血量數值
     private float iniHp;                // 最大初始血量
     public float maxHp = 100f;          // 當前最大血量(初始血量)
+    [HideInInspector]
     public float minHp = 0f;            // 最低血量
-    public float plusHpPerSecond = 1;   // 每秒加多少
+    //public float plusHpPerSecond = 1;   // 每秒加多少
     public float minusHPPerSecond = 1;  // 每秒扣多少
 
+    [HideInInspector]
     public float currentPlayerHp;       // 玩家當前血量
+    [HideInInspector]
+    public float HpPercentDisplay;      //HP顯示百分率
+
+    public int HpPerPercent;            //每多少血+10%血量顯示
     #endregion
 
     //場景數值
@@ -62,7 +70,7 @@ public class GameManager : MonoBehaviour
     {
         if (gameStart == true)
         {
-            
+
             //玩家狀態
             switch (currentPlayerStat)
             {
@@ -72,9 +80,9 @@ public class GameManager : MonoBehaviour
                 case playerStat.OutHouse:     //在家外時
                     action_loseHp();
                     break;
-                //case playerStat.InHouse:     //在家內時
-                //    action_plusHp();
-                //    break;
+                    //case playerStat.InHouse:     //在家內時
+                    //    action_plusHp();
+                    //    break;
             }
 
             if (currentPlayerHp <= 0)
@@ -102,7 +110,9 @@ public class GameManager : MonoBehaviour
         //根據玩家所持道具數量加分
         AddPoint(currentItemHold * pointPerItem);
 
-        currentItemHold = 0;    //道具歸0
+        HpPercentDisplay = Convert.ToInt32(Math.Floor(maxHp / HpPerPercent)) * 0.1f > 1 ? 1 : Convert.ToInt32(Math.Floor(maxHp / HpPerPercent)) * 0.1f;    //顯示最大血量變更
+        Debug.Log(HpPercentDisplay);
+        //currentItemHold = 0;    //道具歸0
     }
 
     public void GameOver()
@@ -122,12 +132,14 @@ public class GameManager : MonoBehaviour
         //遊戲數值重設
         totalScore = 0;
         currentPlayerHp = iniHp;
+        maxHp = iniHp;
         currentPlayerStat = playerStat.OutHouse;
+        HpPercentDisplay = maxHp / HpPerPercent;        //百分率
     }
 
     void action_plusHp()
     {
-        currentPlayerHp = Mathf.Clamp(currentPlayerHp + plusHpPerSecond * Time.deltaTime, minHp, maxHp);
+        //currentPlayerHp = Mathf.Clamp(currentPlayerHp + plusHpPerSecond * Time.deltaTime, minHp, maxHp);
         //objHpBar.GetComponent<Image>().fillAmount = currentPlayerHp / maxHp;
     }
 
@@ -146,7 +158,7 @@ public class GameManager : MonoBehaviour
         currentPlayerHp += hp;
     }
 
-    void AddPoint(int point = 0)
+    public void AddPoint(int point = 0)
     {
         //加分
         totalScore += point;

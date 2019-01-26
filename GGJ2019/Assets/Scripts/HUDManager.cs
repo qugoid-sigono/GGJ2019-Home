@@ -39,7 +39,7 @@ public class HUDManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        adjustHpBar(gameManager.currentPlayerHp/gameManager.maxHp);
+        adjustHpBar(gameManager.currentPlayerHp / gameManager.maxHp * gameManager.HpPercentDisplay);
     }
 
     void adjustHpBar(float hp)
