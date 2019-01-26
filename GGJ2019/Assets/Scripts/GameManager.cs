@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance = null;     //Allows other scripts to call functions from GameManager.             
 
+    public GameObject objPlayer;
+
     #region 玩家血量數值設定
     //玩家血量數值
     private float iniHp;                // 最大初始血量
@@ -57,7 +59,7 @@ public class GameManager : MonoBehaviour
         //If instance already exists:
         else if (instance != this)
             //Destroy this, this enforces our singleton pattern so there can only be one instance of SoundManager.
-            Destroy(gameObject);
+            DestroyImmediate(gameObject);
 
         //Set SoundManager to DontDestroyOnLoad so that it won't be destroyed when reloading our scene.
         DontDestroyOnLoad(gameObject);
@@ -106,6 +108,7 @@ public class GameManager : MonoBehaviour
         if (gameStart == false)
         {
             gameStart = true;
+            objPlayer.SetActive(true);
             resetGameStat();
             Debug.Log("遊戲開始！");
         }
@@ -131,6 +134,7 @@ public class GameManager : MonoBehaviour
             gameStart = false;
             //最高分存檔
             PlayerPrefs.SetInt("HighScore", totalScore);
+            objPlayer.SetActive(false);
             HudManager.OpenResult();
             Debug.Log("遊戲結束！");
         }
@@ -181,11 +185,13 @@ public class GameManager : MonoBehaviour
 
     public void BackToMenu()
     {
+        DestroyImmediate(gameObject);
         SceneManager.LoadScene("Menu");
     }
 
     public void Reload()
     {
-        SceneManager.LoadScene("Game");
+        DestroyImmediate(gameObject);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
