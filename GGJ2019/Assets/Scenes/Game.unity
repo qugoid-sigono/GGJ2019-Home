@@ -1062,7 +1062,7 @@ PrefabInstance:
     - target: {fileID: 468963313936258689, guid: 4e719dd1abd1b429bb4bfc9e5c7aaaf3,
         type: 3}
       propertyPath: m_Name
-      value: Obstacle
+      value: Home
       objectReference: {fileID: 0}
     - target: {fileID: 468963313936258689, guid: 4e719dd1abd1b429bb4bfc9e5c7aaaf3,
         type: 3}
