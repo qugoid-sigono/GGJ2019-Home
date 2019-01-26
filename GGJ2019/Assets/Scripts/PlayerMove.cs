@@ -8,9 +8,9 @@ public class PlayerMove : MonoBehaviour
 	public Rigidbody2D playerRigidbody2D;
 
 	//[Range(0, 150)]
-	public float xForce;
-	public float yForce;
-
+	public float xForce = 2;
+	public float yForce = 2;
+	public uint brakeTime = 10;
 	//目前速度
 	float speedX;
 	float speedY;
@@ -24,7 +24,8 @@ public class PlayerMove : MonoBehaviour
 		speedX = playerRigidbody2D.velocity.x;
 		speedY = playerRigidbody2D.velocity.y;
 		float newSpeedX = Mathf.Clamp(speedX, -maxSpeedX, maxSpeedX);
-		playerRigidbody2D.velocity = new Vector2(newSpeedX, speedY);
+		float newSpeedY = Mathf.Clamp(speedY, -maxSpeedY, maxSpeedY);
+		playerRigidbody2D.velocity = new Vector2(newSpeedX, newSpeedY);
 	}
 
 	/// <summary>水平移動</summary>
@@ -40,6 +41,14 @@ public class PlayerMove : MonoBehaviour
 
 			//horizontalDirection = Input.GetAxis(HORIZONTAL);
 			playerRigidbody2D.AddForce(new Vector2(xF , yF));
+		}else{
+			if(Mathf.Abs(playerRigidbody2D.velocity.x) > 0 || Mathf.Abs(playerRigidbody2D.velocity.y) > 0){
+				float vx = playerRigidbody2D.velocity.x - playerRigidbody2D.velocity.x / (1 + brakeTime);
+				float vy = playerRigidbody2D.velocity.y - playerRigidbody2D.velocity.y / (1 + brakeTime);
+				if(Mathf.Abs(vx) < 0) vx = 0.0f;
+				if(Mathf.Abs(vy) < 0) vy = 0.0f;
+				playerRigidbody2D.velocity = new Vector2(vx, vy);
+			}
 		}
 	}
 
