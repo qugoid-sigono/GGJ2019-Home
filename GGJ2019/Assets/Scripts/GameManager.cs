@@ -136,6 +136,7 @@ public class GameManager : MonoBehaviour
             isGameStart = false;
             //最高分存檔
             PlayerPrefs.SetInt("HighScore", Convert.ToInt32(timer));
+            objPlayer.GetComponent<PlayerMove>().StopMove();
             objPlayer.GetComponent<PlayerMove>().enabled = false;
             totalScore = Convert.ToInt32(timer);
             HudManager.OpenResult(totalScore);
