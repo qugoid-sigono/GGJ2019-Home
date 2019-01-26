@@ -64,4 +64,26 @@ public class PlayerMove : MonoBehaviour
 		Movement();
 		ControlSpeed();
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        Debug.Log("this is 2D Trigger ,tag :" + other.tag);
+        switch (other.tag)
+        {
+
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        Debug.Log("this is 2D Collision ,tag :" + other.collider.tag);
+        switch (other.collider.tag)
+        {
+            case "Home":
+                GameManager.instance.event_backHome();
+                break;
+            case "":
+                break;
+        }
+    }
 }

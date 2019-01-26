@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ItemTrigger : MonoBehaviour
 {
-	private GameManager gameManager = new GameManager();
+	private GameManager gameManager;
 
     // Start is called before the first frame update
     void Start()
@@ -24,7 +24,7 @@ public class ItemTrigger : MonoBehaviour
 	private void OnTriggerEnter2D(Collider2D other)
 	{
 		if(gameManager){
-			gameManager.currentItemHold++;
+			gameManager.AddWood();
 			Debug.Log("Item Picked Up! Now ItemNum = "+gameManager.currentItemHold);
 			Destroy(this.gameObject);
 		}else{
