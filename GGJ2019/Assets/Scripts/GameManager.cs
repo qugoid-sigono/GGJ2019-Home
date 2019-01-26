@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -9,7 +10,8 @@ public class GameManager : MonoBehaviour
 
     #region 玩家血量數值設定
     //玩家血量數值
-    public float maxHp = 100f;          // 最大血量(初始血量)
+    private float iniHp;                // 最大初始血量
+    public float maxHp = 100f;          // 當前最大血量(初始血量)
     public float minHp = 0f;            // 最低血量
     public float plusHpPerSecond = 1;   // 每秒加多少
     public float minusHPPerSecond = 1;  // 每秒扣多少
@@ -18,10 +20,13 @@ public class GameManager : MonoBehaviour
     #endregion
 
     //場景數值
-    public int totalPoint = 0;         //玩家分數
+    public int totalScore = 0;         //玩家分數
+    public int currentItemHold;        //玩家所持物品數量
+    public int pointPerItem;           //每個道具所加的分
+    public int hpPerItem;              //每個道具所加的血
 
     #region  遊戲環境數值
-    private bool gameStart = false; //遊戲開始狀態(true:開始/false:結束)
+    public bool gameStart = false; //遊戲開始狀態(true:開始/false:結束)
     public enum playerStat
     {
         Iddle = 0,
@@ -48,6 +53,11 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
+    void Start()
+    {
+        iniHp = maxHp;
+    }
+
     void Update()
     {
         if (gameStart == true)
@@ -56,7 +66,7 @@ public class GameManager : MonoBehaviour
             //玩家狀態
             switch (currentPlayerStat)
             {
-                case playerStat.Iddle:     //玩家無事時
+                case playerStat.Iddle:     //玩家無事時(目前沒在用)
                     //nothing
                     break;
                 case playerStat.OutHouse:     //在家外時
@@ -77,15 +87,41 @@ public class GameManager : MonoBehaviour
     public void GameStart()
     {
         //遊戲開始
-        gameStart = true;
-        resetGameStat();
-        Debug.Log("遊戲開始！");
+        if (gameStart == false)
+        {
+            gameStart = true;
+            resetGameStat();
+            Debug.Log("遊戲開始！");
+        }
+    }
+
+    public void event_backHome()
+    {
+        //根據玩家所持的道具回血
+        recoverHp(currentItemHold * hpPerItem);
+        //根據玩家所持道具數量加分
+        AddPoint(currentItemHold * pointPerItem);
+
+        currentItemHold = 0;    //道具歸0
+    }
+
+    public void GameOver()
+    {
+        if (gameStart == true)
+        {
+            //遊戲結束
+            gameStart = false;
+            //最高分存檔
+            PlayerPrefs.SetInt("HighScore", totalScore);
+            Debug.Log("遊戲結束！");
+        }
     }
 
     void resetGameStat()
     {
         //遊戲數值重設
-        currentPlayerHp = maxHp;
+        totalScore = 0;
+        currentPlayerHp = iniHp;
         currentPlayerStat = playerStat.OutHouse;
     }
 
@@ -102,28 +138,28 @@ public class GameManager : MonoBehaviour
         //objHpBar.GetComponent<Image>().fillAmount = currentPlayerHp / maxHp;
     }
 
-    public void recoverHp(int hp)
+    void recoverHp(int hp)
     {
+        //最大生命值增加
+        maxHp += hp;
         //回血
         currentPlayerHp += hp;
     }
 
-    public void AddPoint(int point = 0)
+    void AddPoint(int point = 0)
     {
         //加分
-        totalPoint += point;
-    }
-
-    public void GameOver()
-    {
-        //遊戲結束
-        gameStart = false;
-        Debug.Log("遊戲結束！");
+        totalScore += point;
     }
 
     //改變玩家狀態
     public void ChangePlayerStat(int stat = 0)
     {
         currentPlayerStat = (playerStat)Enum.Parse(typeof(playerStat), stat.ToString());
+    }
+
+    public void BackToMenu()
+    {
+        SceneManager.LoadScene("MenuScene", LoadSceneMode.Additive);
     }
 }
