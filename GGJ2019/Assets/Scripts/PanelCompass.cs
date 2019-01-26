@@ -16,6 +16,10 @@ public class PanelCompass : MonoBehaviour
 
         GameObject uiCamera = GameObject.Find("CameraUI");
 
+        if (target == null || player == null) {
+            return;
+        }
+
         Vector2 dir = this.target.transform.position - uiCamera.transform.position;
         this.initialAngle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
     }
@@ -23,7 +27,7 @@ public class PanelCompass : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (target == null && player == null) {
+        if (target == null || player == null) {
             return;
         }
 
