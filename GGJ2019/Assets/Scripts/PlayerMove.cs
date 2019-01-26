@@ -14,6 +14,9 @@ public class PlayerMove : MonoBehaviour
 	//目前速度
 	float speedX;
 	float speedY;
+	//上次速度
+	float lastXF = 0;
+	float lastYF = 0;
 
 	//[Header("最大水平速度")]
 	public float maxSpeedX;
@@ -39,6 +42,10 @@ public class PlayerMove : MonoBehaviour
 			float xF = (mousePos.x - this.GetComponent<Transform>().position.x) * xForce;
 			float yF = (mousePos.y - this.GetComponent<Transform>().position.y) * yForce;
 
+			TurnImmediately(xF, yF);
+
+			lastXF = xF;
+			lastYF = yF;
 			//horizontalDirection = Input.GetAxis(HORIZONTAL);
 			playerRigidbody2D.AddForce(new Vector2(xF , yF));
 		}else{
@@ -52,6 +59,24 @@ public class PlayerMove : MonoBehaviour
 		}
 	}
 
+	void TurnImmediately(float xForce, float yForce)
+	{		
+		if(lastXF * xForce < 0){
+			float vx = -playerRigidbody2D.velocity.x;
+			playerRigidbody2D.velocity = new Vector2(vx, playerRigidbody2D.velocity.y);
+		}
+
+		if(lastYF * yForce < 0){
+			float vy = -playerRigidbody2D.velocity.y;
+			playerRigidbody2D.velocity = new Vector2(playerRigidbody2D.velocity.x, vy);
+		}
+	}
+
+	public void StopMove()
+	{
+		playerRigidbody2D.velocity = new Vector2(0, 0);
+	}
+
     // Start is called before the first frame update
     void Start()
     {
@@ -63,5 +88,27 @@ public class PlayerMove : MonoBehaviour
     {
 		Movement();
 		ControlSpeed();
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        Debug.Log("this is 2D Trigger ,tag :" + other.tag);
+        switch (other.tag)
+        {
+
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        Debug.Log("this is 2D Collision ,tag :" + other.collider.tag);
+        switch (other.collider.tag)
+        {
+            case "Home":
+                GameManager.instance.event_backHome();
+                break;
+            case "":
+                break;
+        }
     }
 }

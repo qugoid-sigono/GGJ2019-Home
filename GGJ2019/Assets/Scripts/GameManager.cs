@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance = null;     //Allows other scripts to call functions from GameManager.             
 
     public GameObject objPlayer;
+    public GameObject objTransition;
 
     #region 玩家血量數值設定
     //玩家血量數值
@@ -30,13 +31,14 @@ public class GameManager : MonoBehaviour
     #endregion
 
     //場景數值
+    public float timer = 0;
     public int totalScore = 0;         //玩家分數
     public int currentItemHold;        //玩家所持物品數量
-    public int pointPerItem;           //每個道具所加的分
+    //public int pointPerItem;           //每個道具所加的分
     public int hpPerItem;              //每個道具所加的血
 
     #region  遊戲環境數值
-    public bool gameStart = false; //遊戲開始狀態(true:開始/false:結束)
+    public bool isGameStart = false; //遊戲開始狀態(true:開始/false:結束)
     public enum playerStat
     {
         Iddle = 0,
@@ -69,18 +71,19 @@ public class GameManager : MonoBehaviour
     {
         iniHp = maxHp;
         HudManager = HUDManager.instance;
+        StartCoroutine("setGameStart");
     }
 
     void Update()
     {
-        if (Input.GetKeyUp(KeyCode.P))
-        {
-            GameStart();
-        }
+        //if (Input.GetKeyUp(KeyCode.P))
+        //{
+        //    GameStart();
+        //}
 
-        if (gameStart == true)
+        if (isGameStart == true)
         {
-
+            timer += Time.deltaTime;
             //玩家狀態
             switch (currentPlayerStat)
             {
@@ -105,10 +108,10 @@ public class GameManager : MonoBehaviour
     public void GameStart()
     {
         //遊戲開始
-        if (gameStart == false)
+        if (isGameStart == false)
         {
-            gameStart = true;
-            objPlayer.SetActive(true);
+            isGameStart = true;
+            objPlayer.GetComponent<PlayerMove>().enabled = true;
             resetGameStat();
             Debug.Log("遊戲開始！");
         }
@@ -119,23 +122,24 @@ public class GameManager : MonoBehaviour
         //根據玩家所持的道具回血
         recoverHp(currentItemHold * hpPerItem);
         //根據玩家所持道具數量加分
-        AddPoint(currentItemHold * pointPerItem);
-
+        //AddPoint(currentItemHold * pointPerItem);
         HpPercentDisplay = Convert.ToInt32(Math.Floor(maxHp / HpPerPercent)) * 0.1f > 1 ? 1 : (Convert.ToInt32(Math.Floor(maxHp / HpPerPercent)) * 0.1f);    //顯示最大血量變更
         Debug.Log(HpPercentDisplay);
-        //currentItemHold = 0;    //道具歸0
+        currentItemHold = 0;    //道具歸0
     }
 
     public void GameOver()
     {
-        if (gameStart == true)
+        if (isGameStart == true)
         {
             //遊戲結束
-            gameStart = false;
+            isGameStart = false;
             //最高分存檔
-            PlayerPrefs.SetInt("HighScore", totalScore);
-            objPlayer.SetActive(false);
-            HudManager.OpenResult();
+            PlayerPrefs.SetInt("HighScore", Convert.ToInt32(timer));
+            objPlayer.GetComponent<PlayerMove>().StopMove();
+            objPlayer.GetComponent<PlayerMove>().enabled = false;
+            totalScore = Convert.ToInt32(timer);
+            HudManager.OpenResult(totalScore);
             Debug.Log("遊戲結束！");
         }
     }
@@ -144,6 +148,7 @@ public class GameManager : MonoBehaviour
     {
         //遊戲數值重設
         totalScore = 0;
+        timer = 0f;
         currentPlayerHp = iniHp;
         maxHp = iniHp;
         currentPlayerStat = playerStat.OutHouse;
@@ -177,6 +182,11 @@ public class GameManager : MonoBehaviour
         totalScore += point;
     }
 
+    public void AddWood()
+    {
+        currentItemHold += 1;
+    }
+
     //改變玩家狀態
     public void ChangePlayerStat(int stat = 0)
     {
@@ -193,5 +203,13 @@ public class GameManager : MonoBehaviour
     {
         DestroyImmediate(gameObject);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    IEnumerator setGameStart()
+    {
+        objTransition.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        objTransition.SetActive(false);
+        GameStart();
     }
 }

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6095028786838385878}
   - component: {fileID: 1252348959348758605}
   - component: {fileID: 3719229783804291049}
+  - component: {fileID: 3365977457622638647}
   m_Layer: 0
   m_Name: Obstacle
   m_TagString: Untagged
@@ -27,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 468963313936258689}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 10, y: 10, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -70,11 +71,11 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 47194dcc3e20c4c3f87f6da7787fc588, type: 3}
-  m_Color: {r: 0.9481132, g: 0.9808577, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 2.69, y: 2.58}
+  m_DrawMode: 1
+  m_Size: {x: 2.12, y: 2.03}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -93,16 +94,28 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.014117837, y: 0.009136528}
   m_SpriteTilingProperty:
-    border: {x: 0.016666668, y: 0.05, z: 0.016666668, w: 0.016666668}
+    border: {x: 0.65, y: 1.05, z: 0.59, w: 0.72999996}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.11208333, y: 0.1075}
-    newSize: {x: 2.69, y: 2.58}
+    oldSize: {x: 2.12, y: 2.03}
+    newSize: {x: 2.12, y: 2.03}
     adaptiveTilingThreshold: 0.5
-    drawMode: 0
+    drawMode: 1
     adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_AutoTiling: 1
   serializedVersion: 2
-  m_Size: {x: 0.101, y: 0.1}
+  m_Size: {x: 1.9323909, y: 1.8211019}
   m_EdgeRadius: 0
+--- !u!114 &3365977457622638647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 468963313936258689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f11985b6f045574db172ed50b3229c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

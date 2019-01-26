@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,7 +12,11 @@ public class HUDManager : MonoBehaviour
 
     public GameObject obj_HpBar;
     public GameObject obj_MsgBlock;
-    public GameObject obj_Result;
+    public GameObject obj_ResultPanel;
+    public GameObject obj_Score;
+    public GameObject obj_ResultScore;
+    public GameObject obj_ResultHighScore;
+    public GameObject obj_WoodCountTxt;
 
     void Awake()
     {
@@ -41,6 +46,8 @@ public class HUDManager : MonoBehaviour
     void Update()
     {
         adjustHpBar(gameManager.currentPlayerHp / gameManager.maxHp * gameManager.HpPercentDisplay);
+        adjustScore(gameManager.timer);
+        showWoodTxt(gameManager.currentItemHold);
     }
 
     void adjustHpBar(float hp)
@@ -48,14 +55,27 @@ public class HUDManager : MonoBehaviour
         obj_HpBar.GetComponent<Image>().fillAmount = hp;
     }
 
+    void adjustScore(float time)
+    {
+        obj_Score.GetComponent<Text>().text = Mathf.Floor(time / 60).ToString("00") + ":" + Mathf.Floor(time % 60).ToString("00");
+    }
+
+    public void showWoodTxt(int woodCount)
+    {
+        obj_WoodCountTxt.GetComponent<Text>().text = woodCount.ToString();
+    }
+
     public void sendTextToMsgBlock(string message)
     {
         obj_MsgBlock.GetComponent<Text>().text = message;
     }
 
-    public void OpenResult()
+    public void OpenResult(int score)
     {
         Debug.Log("開結果");
-        obj_Result.SetActive(true);
+        obj_ResultPanel.SetActive(true);
+        obj_ResultScore.GetComponent<Text>().text = Mathf.Floor(score / 60).ToString("00") + ":" + Mathf.Floor(score % 60).ToString("00");
+        obj_ResultHighScore.GetComponent<Text>().text = Mathf.Floor(PlayerPrefs.GetInt("HighScore") / 60).ToString("00") + ":" + Mathf.Floor(PlayerPrefs.GetInt("HighScore") % 60).ToString("00");
+
     }
 }
