@@ -604,6 +604,44 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!50 &784434088278106491
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 784434088278106488}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!114 &784434088278106492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 784434088278106488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0215d848a6e05cd43a83522c0c5024da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerRigidbody2D: {fileID: 784434088278106491}
+  xForce: 2
+  yForce: 2
+  maxSpeedX: 10
+  maxSpeedY: 10
 --- !u!1001 &856803313516523626
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -778,7 +816,7 @@ PrefabInstance:
     - target: {fileID: 707269213900381515, guid: 96a8ff1e824ec49bc92c6564a1c74d8f,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 707269213900381515, guid: 96a8ff1e824ec49bc92c6564a1c74d8f,
         type: 3}
@@ -830,6 +868,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 468963313936258689, guid: 4e719dd1abd1b429bb4bfc9e5c7aaaf3,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 6095028786838385878, guid: 4e719dd1abd1b429bb4bfc9e5c7aaaf3,
         type: 3}
