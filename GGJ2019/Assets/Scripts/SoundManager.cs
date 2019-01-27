@@ -4,9 +4,12 @@ using System.Collections;
 public class SoundManager : MonoBehaviour 
 {
 	public AudioSource efxSource;                   //Drag a reference to the audio source which will play the sound effects.
-	public AudioSource efxSource_2;                 //Drag a reference to the audio source which will play the sound effects.
+    public AudioSource efxSource_2;                 //Drag a reference to the audio source which will play the sound effects.
 	public AudioSource musicSource;                 //Drag a reference to the audio source which will play the music.
-	public static SoundManager instance = null;     //Allows other scripts to call functions from SoundManager.             
+    public AudioSource musicSource2;                //Drag a reference to the audio source which will play the music.
+    public AudioClip sfxCollectWood;
+    public AudioClip sfxHighScore;
+    public static SoundManager instance = null;     //Allows other scripts to call functions from SoundManager.             
 	public float lowPitchRange = .95f;              //The lowest a sound effect will be randomly pitched.
 	public float highPitchRange = 1.05f;            //The highest a sound effect will be randomly pitched.
 
@@ -36,8 +39,36 @@ public class SoundManager : MonoBehaviour
 		musicSource.Stop ();
 	}
 
-	//Used to play single sound clips.
-	public void PlaySingle(AudioClip clip)
+    public void PlayMusic_intense()
+    {
+        musicSource.Play();
+    }
+
+    public void TurnOffMusic_intense()
+    {
+        musicSource.Stop();
+    }
+
+    public void Play_CollectWood()
+    {
+        //Set the clip of our efxSource audio source to the clip passed in as a parameter.
+        efxSource.clip = sfxCollectWood;
+
+        //Play the clip.
+        efxSource.Play();
+    }
+
+    public void Play_HighScore()
+    {
+        //Set the clip of our efxSource audio source to the clip passed in as a parameter.
+        efxSource.clip = sfxHighScore;
+
+        //Play the clip.
+        efxSource.Play();
+    }
+
+    //Used to play single sound clips.
+    public void PlaySingle(AudioClip clip)
 	{
 		//Set the clip of our efxSource audio source to the clip passed in as a parameter.
 		efxSource.clip = clip;

@@ -10029,7 +10029,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 145, y: -49.5}
+  m_AnchoredPosition: {x: 140, y: -49.5}
   m_SizeDelta: {x: 1351, y: 84}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &6842781948718151300
@@ -14979,12 +14979,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obj_HpBar: {fileID: 856803313495727450}
+  obj_HpBarShadow: {fileID: 5530554944176160847}
+  obj_HpFlame: {fileID: 3671013443964825740}
   obj_MsgBlock: {fileID: 9008078253609199385}
   obj_ResultPanel: {fileID: 0}
-  obj_Score: {fileID: 0}
+  obj_Score: {fileID: 5947409961700544713}
   obj_ResultScore: {fileID: 0}
   obj_ResultHighScore: {fileID: 0}
-  obj_WoodCountTxt: {fileID: 0}
+  obj_WoodCountTxt: {fileID: 3492034551812443219}
 --- !u!1 &7008114497289398024
 GameObject:
   m_ObjectHideFlags: 0

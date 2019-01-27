@@ -191,6 +191,7 @@ public class GameManager : MonoBehaviour
     public void AddWood()
     {
         currentItemHold += 1;
+        SFXManager.Play_CollectWood();
     }
 
 	public void AddPickaxe(int num)

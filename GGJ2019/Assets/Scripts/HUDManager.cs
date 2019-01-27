@@ -11,6 +11,8 @@ public class HUDManager : MonoBehaviour
     private GameManager gameManager;
 
     public GameObject obj_HpBar;
+    public GameObject obj_HpBarShadow;
+    public GameObject obj_HpFlame;
     public GameObject obj_MsgBlock;
     public GameObject obj_ResultPanel;
     public GameObject obj_Score;
@@ -53,6 +55,8 @@ public class HUDManager : MonoBehaviour
     void adjustHpBar(float hp)
     {
         obj_HpBar.GetComponent<Image>().fillAmount = hp;
+        obj_HpBarShadow.GetComponent<Image>().fillAmount = hp;
+        obj_HpFlame.GetComponent<RectTransform>().localPosition = new Vector3(1350 * hp, 0,0);
     }
 
     void adjustScore(float time)
