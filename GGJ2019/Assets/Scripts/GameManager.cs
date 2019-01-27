@@ -254,6 +254,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(4f);
         objTransition.SetActive(false);
         HUDManager.instance.gameObject.SetActive(true);
-        GameStart();
+        HUDManager.instance.sendTextToMsgBlock("遊戲開始");
+        //GameStart();
     }
 }

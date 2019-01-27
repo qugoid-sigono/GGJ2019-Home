@@ -13,6 +13,7 @@ public class HUDManager : MonoBehaviour
     public GameObject obj_HpBar;
     public GameObject obj_HpBarShadow;
     public GameObject obj_HpFlame;
+    public GameObject obj_MsgPanel;
     public GameObject obj_MsgBlock;
     public GameObject obj_ResultPanel;
     public GameObject obj_Score;
@@ -80,6 +81,7 @@ public class HUDManager : MonoBehaviour
 
     public void sendTextToMsgBlock(string message)
     {
+        obj_MsgPanel.SetActive(true);
         obj_MsgBlock.GetComponent<Text>().text = message;
     }
 
