@@ -1,19 +1,28 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PanelCompass : MonoBehaviour
 {
-    GameObject target;
-    GameObject player;
+    public GameObject target;
+    public GameObject player;
+    public GameObject campssIcon;
+    private Image compassIamge
+    {
+        get{
+            if (this._campassImageCache == null) {
+                this._campassImageCache = this.campssIcon.GetComponent<Image>();
+            }
+            return this._campassImageCache;
+        }
+    }
+    private Image _campassImageCache;
     float initialAngle = 0;
     float rotateSpeed = 10;
     // Start is called before the first frame update
     void Start()
     {
-        target = GameObject.Find("Home");
-        player = GameObject.Find("Player");
-
         GameObject uiCamera = GameObject.Find("CameraUI");
 
         if (target == null || player == null) {
@@ -30,6 +39,10 @@ public class PanelCompass : MonoBehaviour
         if (target == null || player == null) {
             return;
         }
+
+        float distance = Vector3.Distance(target.transform.position, player.transform.position);
+        float alpha = distance >= 14 ? 1 : 0;
+        compassIamge.color = new Color(1, 1, 1, alpha);
 
         Vector2 dir = this.target.transform.position - this.player.transform.position;
         // The magic of degree.
