@@ -48,7 +48,28 @@ public class PlayerMove : MonoBehaviour
 			lastYF = yF;
 			//horizontalDirection = Input.GetAxis(HORIZONTAL);
 			playerRigidbody2D.AddForce(new Vector2(xF , yF));
-		}else{
+
+            if (lastYF > 0 && Mathf.Abs(lastYF) > Mathf.Abs(lastXF)) //向上
+            {
+                this.gameObject.GetComponent<Animator>().SetInteger("WALK", 1);
+            }
+
+            if (lastXF > 0 && Mathf.Abs(lastXF) > Mathf.Abs(lastYF)) //向右
+		    {
+		        this.gameObject.GetComponent<Animator>().SetInteger("WALK",2);
+		    }
+
+            if (lastYF < 0 && Mathf.Abs(lastYF) > Mathf.Abs(lastXF)) //向下
+            {
+                this.gameObject.GetComponent<Animator>().SetInteger("WALK", 3);
+            }
+
+            if (lastXF < 0 && Mathf.Abs(lastXF) > Mathf.Abs(lastYF)) //向左
+		    {
+                this.gameObject.GetComponent<Animator>().SetInteger("WALK", 4);
+            }
+        }
+        else{
 			if(Mathf.Abs(playerRigidbody2D.velocity.x) > 0 || Mathf.Abs(playerRigidbody2D.velocity.y) > 0){
 				float vx = playerRigidbody2D.velocity.x - playerRigidbody2D.velocity.x / (1 + brakeTime);
 				float vy = playerRigidbody2D.velocity.y - playerRigidbody2D.velocity.y / (1 + brakeTime);
@@ -56,7 +77,9 @@ public class PlayerMove : MonoBehaviour
 				if(Mathf.Abs(vy) < 0) vy = 0.0f;
 				playerRigidbody2D.velocity = new Vector2(vx, vy);
 			}
-		}
+
+            this.gameObject.GetComponent<Animator>().SetInteger("WALK", 0);
+        }
 	}
 
 	void TurnImmediately(float xForce, float yForce)

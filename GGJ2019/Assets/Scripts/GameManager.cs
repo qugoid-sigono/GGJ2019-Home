@@ -45,7 +45,8 @@ public class GameManager : MonoBehaviour
     {
         Iddle = 0,
         OutHouse = 1,
-        InHouse = 2
+        NonIntense = 2,
+        Intense = 3
     }
 
     public playerStat currentPlayerStat;              //玩家當前狀況(0:nothing/1:家外/2:家內)
@@ -102,6 +103,15 @@ public class GameManager : MonoBehaviour
                     //    break;
             }
 
+            if (currentPlayerHp/minusHPPerSecond < 10)
+            {
+                SFXManager.PlayMusic_intense();
+            }
+            else
+            {
+                SFXManager.PlayMusic();
+            }
+
             if (currentPlayerHp <= 0)
             {
                 GameOver();
@@ -140,6 +150,7 @@ public class GameManager : MonoBehaviour
             //遊戲結束
             isGameStart = false;
             SFXManager.TurnOffMusic();
+            SFXManager.TurnOffMusic_intense();
             //最高分存檔
             PlayerPrefs.SetInt("HighScore", Convert.ToInt32(timer));
             objPlayer.GetComponent<PlayerMove>().StopMove();

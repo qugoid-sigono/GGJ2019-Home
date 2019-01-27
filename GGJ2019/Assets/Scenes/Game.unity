@@ -585,12 +585,12 @@ PrefabInstance:
     - target: {fileID: 1978596543225574191, guid: 3b67ec191abebc44ebbba872cc2a8de0,
         type: 3}
       propertyPath: HpPerPercent
-      value: 30
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 1978596543225574191, guid: 3b67ec191abebc44ebbba872cc2a8de0,
         type: 3}
       propertyPath: hpPerItem
-      value: 15
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b67ec191abebc44ebbba872cc2a8de0, type: 3}
@@ -877,12 +877,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74f45f6c98f674341bab59f8b1b97c0a, type: 3}
---- !u!1 &1486346024 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5947409961700544713, guid: 50d6a5e6263f146419bc902789f2de6e,
-    type: 3}
-  m_PrefabInstance: {fileID: 856803313516523626}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1556284583
 GameObject:
   m_ObjectHideFlags: 0
@@ -910,7 +904,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1556284583}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: ea149bfec0ae0424e8d7529bf2b6c625, type: 3}
@@ -1014,6 +1008,7 @@ MonoBehaviour:
   efxSource: {fileID: 1556284587}
   efxSource_2: {fileID: 1556284588}
   musicSource: {fileID: 1556284584}
+  musicSource2: {fileID: 0}
   sfxCollectWood: {fileID: 8300000, guid: a49860f7b8213d34f866d48c3652a7b9, type: 3}
   sfxHighScore: {fileID: 0}
   lowPitchRange: 0.95
@@ -1553,29 +1548,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 856803313516523630, guid: 50d6a5e6263f146419bc902789f2de6e,
         type: 3}
-      propertyPath: obj_Result
-      value: 
-      objectReference: {fileID: 1121240988}
-    - target: {fileID: 856803313516523630, guid: 50d6a5e6263f146419bc902789f2de6e,
-        type: 3}
       propertyPath: obj_ResultPanel
       value: 
       objectReference: {fileID: 1121240988}
-    - target: {fileID: 856803313516523630, guid: 50d6a5e6263f146419bc902789f2de6e,
-        type: 3}
-      propertyPath: obj_Score
-      value: 
-      objectReference: {fileID: 1486346024}
-    - target: {fileID: 856803313516523630, guid: 50d6a5e6263f146419bc902789f2de6e,
-        type: 3}
-      propertyPath: obj_HighScore
-      value: 
-      objectReference: {fileID: 393464916}
-    - target: {fileID: 856803313516523630, guid: 50d6a5e6263f146419bc902789f2de6e,
-        type: 3}
-      propertyPath: obj_WoodCountTxt
-      value: 
-      objectReference: {fileID: 856803313516523627}
     - target: {fileID: 856803313516523630, guid: 50d6a5e6263f146419bc902789f2de6e,
         type: 3}
       propertyPath: obj_ResultScore
@@ -1586,19 +1561,8 @@ PrefabInstance:
       propertyPath: obj_ResultHighScore
       value: 
       objectReference: {fileID: 393464916}
-    - target: {fileID: 7605096134098268888, guid: 50d6a5e6263f146419bc902789f2de6e,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 50d6a5e6263f146419bc902789f2de6e, type: 3}
---- !u!1 &856803313516523627 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3492034551812443219, guid: 50d6a5e6263f146419bc902789f2de6e,
-    type: 3}
-  m_PrefabInstance: {fileID: 856803313516523626}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &865192605902619878
 PrefabInstance:
   m_ObjectHideFlags: 0

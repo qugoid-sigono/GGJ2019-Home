@@ -8,6 +8,7 @@ public class SoundManager : MonoBehaviour
 	public AudioSource musicSource;                 //Drag a reference to the audio source which will play the music.
     public AudioSource musicSource2;                //Drag a reference to the audio source which will play the music.
     public AudioClip sfxCollectWood;
+    public AudioClip sfxBurnWood;
     public AudioClip sfxHighScore;
     public static SoundManager instance = null;     //Allows other scripts to call functions from SoundManager.             
 	public float lowPitchRange = .95f;              //The lowest a sound effect will be randomly pitched.
@@ -31,7 +32,15 @@ public class SoundManager : MonoBehaviour
 
 	public void PlayMusic()
 	{
-		musicSource.Play ();
+        if (musicSource2.isPlaying)
+        {
+            musicSource2.Stop();
+        }
+
+	    if (!musicSource.isPlaying)
+	    {
+            musicSource.Play();
+        }
 	}
 
 	public void TurnOffMusic()
@@ -41,7 +50,15 @@ public class SoundManager : MonoBehaviour
 
     public void PlayMusic_intense()
     {
-        musicSource.Play();
+        if (musicSource.isPlaying)
+        {
+            musicSource.Stop();
+        }
+
+        if (!musicSource2.isPlaying)
+        {
+            musicSource2.Play();
+        }
     }
 
     public void TurnOffMusic_intense()
