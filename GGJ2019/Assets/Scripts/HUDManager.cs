@@ -22,6 +22,8 @@ public class HUDManager : MonoBehaviour
     public GameObject obj_ResultHighScore;
     public GameObject obj_WoodCountTxt;
     public GameObject obj_WoodCountTxtShadow;
+    public GameObject obj_AxeNumTxt;
+    public GameObject obj_AxeNumTxtShadow;
 
     void Awake()
     {
@@ -57,6 +59,7 @@ public class HUDManager : MonoBehaviour
         adjustHpBar(gameManager.currentPlayerHp / gameManager.maxHp * gameManager.HpPercentDisplay);
         adjustScore(gameManager.timer);
         showWoodTxt(gameManager.currentItemHold);
+        adjustAxe(gameManager.pickaxeNum);
     }
 
     void adjustHpBar(float hp)
@@ -77,6 +80,12 @@ public class HUDManager : MonoBehaviour
         obj_WoodCountTxt.GetComponent<Text>().text = woodCount.ToString();
         obj_WoodCountTxtShadow.GetComponent<Text>().text = woodCount.ToString();
         
+    }
+
+    void adjustAxe(float num)
+    {
+        obj_AxeNumTxt.GetComponent<Text>().text = num.ToString();
+        obj_AxeNumTxtShadow.GetComponent<Text>().text = num.ToString();
     }
 
     public void sendTextToMsgBlock(string message)
