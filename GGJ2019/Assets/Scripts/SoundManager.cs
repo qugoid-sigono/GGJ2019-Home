@@ -34,7 +34,7 @@ public class SoundManager : MonoBehaviour
 	{
         if (musicSource2.isPlaying)
         {
-            musicSource2.Stop();
+            musicSource2.Pause();
         }
 
 	    if (!musicSource.isPlaying)
@@ -45,14 +45,14 @@ public class SoundManager : MonoBehaviour
 
 	public void TurnOffMusic()
 	{
-		musicSource.Stop ();
+		musicSource.Stop();
 	}
 
     public void PlayMusic_intense()
     {
         if (musicSource.isPlaying)
         {
-            musicSource.Stop();
+            musicSource.Pause();
         }
 
         if (!musicSource2.isPlaying)

@@ -44,6 +44,10 @@ public class HUDManager : MonoBehaviour
         {
             gameManager = GameManager.instance;
         }
+
+        adjustHpBar(gameManager.currentPlayerHp / gameManager.maxHp * gameManager.HpPercentDisplay);
+        adjustScore(gameManager.timer);
+        showWoodTxt(gameManager.currentItemHold);
     }
 
     // Update is called once per frame

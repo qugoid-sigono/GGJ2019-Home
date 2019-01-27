@@ -81,10 +81,10 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        //if (Input.GetKeyUp(KeyCode.P))
-        //{
-        //    GameStart();
-        //}
+        if (Input.GetKeyUp(KeyCode.P))
+        {
+            PlayerPrefs.DeleteAll();
+        }
 
         if (isGameStart == true)
         {
@@ -249,9 +249,11 @@ public class GameManager : MonoBehaviour
 
     IEnumerator setGameStart()
     {
+        HUDManager.instance.gameObject.SetActive(false);
         objTransition.SetActive(true);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(4f);
         objTransition.SetActive(false);
+        HUDManager.instance.gameObject.SetActive(true);
         GameStart();
     }
 }
