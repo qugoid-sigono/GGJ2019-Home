@@ -16,9 +16,11 @@ public class HUDManager : MonoBehaviour
     public GameObject obj_MsgBlock;
     public GameObject obj_ResultPanel;
     public GameObject obj_Score;
+    public GameObject obj_ScoreShadow;
     public GameObject obj_ResultScore;
     public GameObject obj_ResultHighScore;
     public GameObject obj_WoodCountTxt;
+    public GameObject obj_WoodCountTxtShadow;
 
     void Awake()
     {
@@ -62,11 +64,14 @@ public class HUDManager : MonoBehaviour
     void adjustScore(float time)
     {
         obj_Score.GetComponent<Text>().text = Mathf.Floor(time / 60).ToString("00") + ":" + Mathf.Floor(time % 60).ToString("00");
+        obj_ScoreShadow.GetComponent<Text>().text = Mathf.Floor(time / 60).ToString("00") + ":" + Mathf.Floor(time % 60).ToString("00");
     }
 
     public void showWoodTxt(int woodCount)
     {
         obj_WoodCountTxt.GetComponent<Text>().text = woodCount.ToString();
+        obj_WoodCountTxtShadow.GetComponent<Text>().text = woodCount.ToString();
+        
     }
 
     public void sendTextToMsgBlock(string message)

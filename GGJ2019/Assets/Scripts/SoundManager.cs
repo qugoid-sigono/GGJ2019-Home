@@ -63,7 +63,7 @@ public class SoundManager : MonoBehaviour
 
     public void TurnOffMusic_intense()
     {
-        musicSource.Stop();
+        musicSource2.Stop();
     }
 
     public void Play_CollectWood()

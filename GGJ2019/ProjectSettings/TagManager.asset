@@ -48,3 +48,6 @@ TagManager:
   - name: UIParticles
     uniqueID: 2022220427
     locked: 0
+  - name: UICredits
+    uniqueID: 2401618215
+    locked: 0

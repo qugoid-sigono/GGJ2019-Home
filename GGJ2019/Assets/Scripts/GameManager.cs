@@ -153,6 +153,10 @@ public class GameManager : MonoBehaviour
             SFXManager.TurnOffMusic_intense();
             //最高分存檔
             PlayerPrefs.SetInt("HighScore", Convert.ToInt32(timer));
+            if (timer > PlayerPrefs.GetInt("HighScore"))
+            {
+                SoundManager.instance.Play_HighScore();
+            }
             objPlayer.GetComponent<PlayerMove>().StopMove();
             objPlayer.GetComponent<PlayerMove>().enabled = false;
             totalScore = Convert.ToInt32(timer);
