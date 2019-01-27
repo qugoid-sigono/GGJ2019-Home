@@ -34,6 +34,7 @@ public class MenuManager : MonoBehaviour
 
     public void CloseCredit()
     {
+        Debug.Log("關閉");
         creditPanel.SetActive(false);
     }
 
