@@ -32,7 +32,7 @@ public class ItemBehaviorr : MonoBehaviour
     {
         
     }
-
+/*	//用raycasting寫在playerMove
 	void OnMouseDown()
 	{
 		mouseDown = true;
@@ -42,12 +42,29 @@ public class ItemBehaviorr : MonoBehaviour
 	{
 		if(mouseDown){
 			mouseDown = false;
+			print("mouseDown" + mouseDown);
 			if(InteractionRange != null)
 			if(InteractionRange.GetComponent<InTrigger>().canInteraction){
+				print("UsePickaxe" + mouseDown);
 				if(gameManager.UsePickaxe())
 					Hp --;
 			}
 		}
+		if(Hp <= 0){
+			Destroy(this.gameObject);
+		}
+	}
+*/
+	public void OnMouseRayHit()
+	{
+		print("OnMouseClick");
+		if(InteractionRange != null)
+		if(InteractionRange.GetComponent<InTrigger>().canInteraction){
+			print("UsePickaxe");
+			if(gameManager.UsePickaxe())
+				Hp --;
+		}
+
 		if(Hp <= 0){
 			Destroy(this.gameObject);
 		}

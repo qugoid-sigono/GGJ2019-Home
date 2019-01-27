@@ -111,6 +111,17 @@ public class PlayerMove : MonoBehaviour
     {
 		Movement();
 		ControlSpeed();
+		if(Input.GetMouseButtonDown(0)){
+			RaycastHit2D[] hits = Physics2D.GetRayIntersectionAll(Camera.main.ScreenPointToRay(Input.mousePosition));
+
+			for(int i = 0; i < hits.Length; i++)
+			{
+				if(hits[i].collider.GetComponent<ItemBehaviorr>()){
+					hits[i].collider.GetComponent<ItemBehaviorr>().OnMouseRayHit();
+				}
+			}
+		}
+
     }
 
     private void OnTriggerEnter2D(Collider2D other)
