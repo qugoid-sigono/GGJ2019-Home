@@ -43,15 +43,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c57c932ad625e734eafe207e0a6974c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 200
+  objPlayer: {fileID: 0}
+  objTransition: {fileID: 0}
+  objParticle: {fileID: 0}
+  maxHp: 100
   minHp: 0
-  minusHPPerSecond: 20
+  minusHPPerSecond: 5
   currentPlayerHp: 0
   HpPercentDisplay: 0
-  HpPerPercent: 50
+  HpPerPercent: 25
+  timer: 0
   totalScore: 0
   currentItemHold: 0
-  pointPerItem: 50
   hpPerItem: 25
-  gameStart: 0
+  pickaxeNum: 0
+  isGameStart: 0
   currentPlayerStat: 0
