@@ -889,6 +889,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 8840129388904782801}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1695504657 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3479975356953190879, guid: 50d6a5e6263f146419bc902789f2de6e,
+    type: 3}
+  m_PrefabInstance: {fileID: 856803313516523626}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1759545125 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8336642287893720838, guid: ea749dc6954734eed978037b3b00873f,
@@ -1273,6 +1279,11 @@ PrefabInstance:
       propertyPath: campssIcon
       value: 
       objectReference: {fileID: 1095208374}
+    - target: {fileID: 7605096134098268888, guid: 50d6a5e6263f146419bc902789f2de6e,
+        type: 3}
+      propertyPath: groupIcon
+      value: 
+      objectReference: {fileID: 1695504657}
     - target: {fileID: 7099657671729984956, guid: 50d6a5e6263f146419bc902789f2de6e,
         type: 3}
       propertyPath: m_IsActive
