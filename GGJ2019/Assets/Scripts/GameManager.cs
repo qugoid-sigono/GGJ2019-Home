@@ -51,6 +51,7 @@ public class GameManager : MonoBehaviour
     public playerStat currentPlayerStat;              //玩家當前狀況(0:nothing/1:家外/2:家內)
 
     private HUDManager HudManager;
+    private SoundManager SFXManager;
     #endregion
 
 
@@ -73,6 +74,7 @@ public class GameManager : MonoBehaviour
     {
         iniHp = maxHp;
         HudManager = HUDManager.instance;
+        SFXManager = SoundManager.instance;
         StartCoroutine("setGameStart");
     }
 
@@ -113,6 +115,7 @@ public class GameManager : MonoBehaviour
         if (isGameStart == false)
         {
             isGameStart = true;
+            SFXManager.PlayMusic();
             objPlayer.GetComponent<PlayerMove>().enabled = true;
             resetGameStat();
             Debug.Log("遊戲開始！");
@@ -136,6 +139,7 @@ public class GameManager : MonoBehaviour
         {
             //遊戲結束
             isGameStart = false;
+            SFXManager.TurnOffMusic();
             //最高分存檔
             PlayerPrefs.SetInt("HighScore", Convert.ToInt32(timer));
             objPlayer.GetComponent<PlayerMove>().StopMove();
