@@ -10,7 +10,7 @@ public class ItemBehaviorr : MonoBehaviour
 
 
 	bool mouseDown = false;
-	public int Hp = 3;
+	public int Hp = 1;
 
     void Start()
     {
