@@ -103,7 +103,7 @@ public class GameManager : MonoBehaviour
                     //    break;
             }
 
-            if (currentPlayerHp/minusHPPerSecond < 10)
+            if (currentPlayerHp/minusHPPerSecond < 25)
             {
                 SFXManager.PlayMusic_intense();
             }
@@ -254,7 +254,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(4f);
         objTransition.SetActive(false);
         HUDManager.instance.gameObject.SetActive(true);
-        HUDManager.instance.sendTextToMsgBlock("Keep the fire alive!\n\nPick up firewood and \nBring it back to your \nigloo to prevent the \nfire from dying out !\nYour cozy home \ndepends on it!");
+        HUDManager.instance.sendTextToMsgBlock("Pick up firewood and bring it back to your igloo to prevent the fire from dying out! Your cozy home depends on it!");
         //GameStart();
     }
 }

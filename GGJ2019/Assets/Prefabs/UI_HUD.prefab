@@ -15391,6 +15391,8 @@ MonoBehaviour:
   obj_ResultHighScore: {fileID: 0}
   obj_WoodCountTxt: {fileID: 3492034551812443219}
   obj_WoodCountTxtShadow: {fileID: 9093406542321855231}
+  obj_AxeNumTxt: {fileID: 8118128419427773069}
+  obj_AxeNumTxtShadow: {fileID: 7157641672747444260}
 --- !u!1 &7008114497289398024
 GameObject:
   m_ObjectHideFlags: 0
@@ -15469,9 +15471,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'MESSAGE
-
-'
+  m_Text: Keep the fire alive!
 --- !u!1 &7099657671729984956
 GameObject:
   m_ObjectHideFlags: 0
