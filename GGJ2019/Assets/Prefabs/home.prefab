@@ -50,7 +50,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.014117837, y: 0.009136528}
+  m_Offset: {x: 0.014117718, y: -0.4312551}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -59,9 +59,9 @@ BoxCollider2D:
     adaptiveTilingThreshold: 0.5
     drawMode: 1
     adaptiveTiling: 0
-  m_AutoTiling: 1
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.9323909, y: 1.8211019}
+  m_Size: {x: 6.348047, y: 6.565547}
   m_EdgeRadius: 0
 --- !u!114 &6406089019322214687
 MonoBehaviour:
@@ -329,7 +329,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.14578992}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -340,7 +340,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.4739475, y: 2.3811955}
+  m_Size: {x: 2.8215084, y: 2.9202938}
   m_EdgeRadius: 0
 --- !u!114 &2588058522853715652
 MonoBehaviour:
@@ -472,7 +472,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7202000319742152017
 RectTransform:
   m_ObjectHideFlags: 0
