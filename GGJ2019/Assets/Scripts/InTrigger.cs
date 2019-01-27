@@ -5,12 +5,14 @@ using UnityEngine;
 public class InTrigger : MonoBehaviour
 {
 
+	public GameObject Object;
 	public bool canInteraction = false;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        
+		this.GetComponent<BoxCollider2D>().size = Object.GetComponent<SpriteRenderer>().size + new Vector2(0.5f,0.5f);
     }
 
     // Update is called once per frame
