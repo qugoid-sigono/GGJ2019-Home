@@ -15,6 +15,9 @@ public class ItemBehaviorr : MonoBehaviour
     void Start()
     {
 		//遊戲開始時根據Y軸調整物件圖層
+		if(this.GetComponent<SpriteRenderer>() == null)
+			return;
+
 		float posY = this.GetComponent<Transform>().position.y;
 		this.GetComponent<SpriteRenderer>().sortingOrder = -((int)posY + 1000);
 
