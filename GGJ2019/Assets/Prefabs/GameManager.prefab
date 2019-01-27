@@ -45,17 +45,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objPlayer: {fileID: 0}
   objTransition: {fileID: 0}
-  objParticle: {fileID: 0}
-  maxHp: 100
+  objParticle: {fileID: 542216649, guid: 0e2d7a2c93fd1bf45b6b5414f88a82b0, type: 3}
+  maxHp: 200
   minHp: 0
   minusHPPerSecond: 5
   currentPlayerHp: 0
   HpPercentDisplay: 0
-  HpPerPercent: 25
+  HpPerPercent: 50
   timer: 0
   totalScore: 0
   currentItemHold: 0
-  hpPerItem: 25
+  hpPerItem: 50
   pickaxeNum: 0
   isGameStart: 0
   currentPlayerStat: 0

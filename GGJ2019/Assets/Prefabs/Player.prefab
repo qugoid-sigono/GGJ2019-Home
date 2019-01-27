@@ -80,7 +80,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 784434088278106488}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0215d848a6e05cd43a83522c0c5024da, type: 3}
   m_Name: 
@@ -88,7 +88,7 @@ MonoBehaviour:
   playerRigidbody2D: {fileID: 784434088278106491}
   xForce: 2
   yForce: 2
-  brakeTime: 10
+  brakeTime: 5
   maxSpeedX: 10
   maxSpeedY: 10
 --- !u!95 &1902932185875658817

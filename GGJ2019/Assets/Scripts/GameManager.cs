@@ -254,7 +254,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(4f);
         objTransition.SetActive(false);
         HUDManager.instance.gameObject.SetActive(true);
-        HUDManager.instance.sendTextToMsgBlock("遊戲開始");
+        HUDManager.instance.sendTextToMsgBlock("Keep the fire alive!\n\nPick up firewood and \nBring it back to your \nigloo to prevent the \nfire from dying out !\nYour cozy home \ndepends on it!");
         //GameStart();
     }
 }
