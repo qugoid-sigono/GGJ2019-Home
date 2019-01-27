@@ -12,7 +12,9 @@ public class InTrigger : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-		this.GetComponent<BoxCollider2D>().size = Object.GetComponent<SpriteRenderer>().size + new Vector2(0.5f,0.5f);
+		if(Object){
+			this.GetComponent<BoxCollider2D>().size = Object.GetComponent<SpriteRenderer>().size + new Vector2(0.5f,0.5f);
+		}
     }
 
     // Update is called once per frame
