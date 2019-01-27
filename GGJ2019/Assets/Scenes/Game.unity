@@ -299,6 +299,12 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1297358596}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1095208374 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3682631821653372843, guid: 50d6a5e6263f146419bc902789f2de6e,
+    type: 3}
+  m_PrefabInstance: {fileID: 856803313516523626}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1121240986
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -877,6 +883,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74f45f6c98f674341bab59f8b1b97c0a, type: 3}
+--- !u!1 &1316436464 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 468963313936258689, guid: 4e719dd1abd1b429bb4bfc9e5c7aaaf3,
+    type: 3}
+  m_PrefabInstance: {fileID: 8840129388904782801}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1486346024 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5947409961700544713, guid: 50d6a5e6263f146419bc902789f2de6e,
+    type: 3}
+  m_PrefabInstance: {fileID: 856803313516523626}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1556284583
 GameObject:
   m_ObjectHideFlags: 0
@@ -1561,6 +1579,31 @@ PrefabInstance:
       propertyPath: obj_ResultHighScore
       value: 
       objectReference: {fileID: 393464916}
+    - target: {fileID: 7099657671729984956, guid: 50d6a5e6263f146419bc902789f2de6e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7605096134098268888, guid: 50d6a5e6263f146419bc902789f2de6e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7605096134098268888, guid: 50d6a5e6263f146419bc902789f2de6e,
+        type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 1316436464}
+    - target: {fileID: 7605096134098268888, guid: 50d6a5e6263f146419bc902789f2de6e,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1253316532}
+    - target: {fileID: 7605096134098268888, guid: 50d6a5e6263f146419bc902789f2de6e,
+        type: 3}
+      propertyPath: campssIcon
+      value: 
+      objectReference: {fileID: 1095208374}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 50d6a5e6263f146419bc902789f2de6e, type: 3}
 --- !u!1001 &865192605902619878
